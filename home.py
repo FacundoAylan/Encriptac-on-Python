@@ -32,5 +32,7 @@ def home(ventana):
     label_name.pack()
     label_name = ttk.Label(frame_home, text='Laiila Ayelen Leiva')
     label_name.pack()
+    label_name = ttk.Label(frame_home, text='Facundo Aylan')
+    label_name.pack()
 
     return frame_home
