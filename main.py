@@ -1,20 +1,21 @@
-from tkinter import *
+import tkinter as tk
 from tkinter import ttk
-from objetivo_1 import mensaje_cifrado
-
+from home import home
 
 def main ():
-  ventana = Tk()
+  ventana = tk.Tk()
 
   # Configurar el título de la ventana
-  ventana.title('Encriptación')
+  ventana.title('TP Grupal Parte 1 - Grupo: Programando')
   # Configurar las dimensiones de la ventana
   ventana.geometry('800x600')
   #Configurar el color del background
   ventana.config(bg='black')
+  #agrego el logo de la aplicacion
+  # ventana.iconbitmap("logo.ico")
 
   # Crear y configurar el Frame
-  frame = mensaje_cifrado(ventana)
+  frame = home(ventana)
 
   ventana.mainloop()
 
