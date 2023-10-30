@@ -35,16 +35,29 @@ def cifrado_atbash(ventana, frame_menu):
 
   #Los input encargados de obtener la información
 
-  mensaje_label = ttk.Label( frame_atbash, text = 'Mensaje a cifrar',font=("Arial", 10, "bold"))
+  mensaje_label = ttk.Label( 
+    frame_atbash, 
+    text = 'Mensaje a cifrar',
+    font=("Arial", 10, "bold")
+  )
   mensaje_label.pack(pady = 10)
 
   mensaje_a_cifrar = ttk.Entry(frame_atbash, width = 80)
   mensaje_a_cifrar.pack()
 
-  boton_de_enviar = ttk.Button(frame_atbash, text='Enviar', width = 40, command=lambda: cifrado(mensaje_a_cifrar, etiqueta_resultado))
+  boton_de_enviar = ttk.Button(
+    frame_atbash, 
+    text='Enviar', 
+    width = 40, 
+    command=lambda: cifrado(mensaje_a_cifrar, etiqueta_resultado)
+  )
   boton_de_enviar.pack( pady = 10)
 
-  button = ttk.Button(frame_atbash, text='Regresar', width=40,command=lambda: regresar_menu(frame_atbash, frame_menu, menu_config))
+  button = ttk.Button(
+    frame_atbash, 
+    text='Regresar', 
+    width=40,command=lambda: regresar_menu(frame_atbash, frame_menu, menu_config)
+  )
   button.pack()
 
 

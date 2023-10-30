@@ -6,22 +6,24 @@ def regresar_menu(frame_atbash, frame_menu, menu_config):
   # Mostrar el frame_menu con la configuración original
   frame_menu.pack(**menu_config)
 
-def cifrado(mensaje_a_cifrar, etiqueta_resultado):
-
-    resultado=''
-    for caracter in mensaje_a_cifrar, etiqueta_resultado:
-        if 'a'<= caracter<= 'z':
-            reemplazo=chr(ord('z')-(ord(caracter)-ord('a')))
-        elif 'A' <= caracter <='Z':
-            reemplazo=chr(ord('Z')-(ord(caracter)-ord('A')))
+def decifrado(mensaje_a_descifrar, etiqueta_resultado):
+    
+    texto = mensaje_a_descifrar.get()
+    resultado = ''
+    for caracter in texto:
+        if 'a' <= caracter <= 'z':
+            reemplazo = chr(ord('z') - (ord(caracter) - ord('a')))
+        elif 'A' <= caracter <= 'Z':
+            reemplazo = chr(ord('Z') - (ord(caracter) - ord('A')))
         elif '0' <= caracter <= '9':
-            reemplazo=chr(ord('9')-(ord(caracter)-ord('0')))
+            reemplazo = chr(ord('9') - (ord(caracter) - ord('0')))
         else:
-            reemplazo=caracter
+            reemplazo = caracter
 
-        resultado+=reemplazo
+        resultado += reemplazo
 
-    etiqueta_resultado.config(text="Texto ingresado: " + resultado)
+    etiqueta_resultado.config(text="Texto descifrado: " + resultado)
+
 
 def decifrado_atbash(ventana, frame_menu):
 
@@ -41,7 +43,7 @@ def decifrado_atbash(ventana, frame_menu):
   mensaje_a_cifrar = ttk.Entry(frame_atbash, width = 80)
   mensaje_a_cifrar.pack()
 
-  boton_de_enviar = ttk.Button(frame_atbash, text='Enviar', width = 40, command=lambda: cifrado(mensaje_a_cifrar, etiqueta_resultado))
+  boton_de_enviar = ttk.Button(frame_atbash, text='Enviar', width = 40, command=lambda: decifrado(mensaje_a_cifrar, etiqueta_resultado))
   boton_de_enviar.pack( pady = 10)
 
   button = ttk.Button(frame_atbash, text='Regresar', width=40,command=lambda: regresar_menu(frame_atbash, frame_menu, menu_config))

@@ -6,36 +6,34 @@ def regresar_menu(frame_cesar, frame_menu, menu_config):
   # Mostrar el frame_menu con la configuración original
   frame_menu.pack(**menu_config)
 
-def cifrado(mensaje_a_cifrar, clave_de_cifrado, etiqueta_resultado):
+def decifrado(mensaje_a_cifrar, clave_de_cifrado, etiqueta_resultado):
+    texto = mensaje_a_cifrar.get()  # Obtener el texto del Entry
+    desplazamiento = int(clave_de_cifrado.get())
 
-  texto = mensaje_a_cifrar.get()  #Obtener el texto del Entry
-  desplazamiento = int(clave_de_cifrado.get())
+    resultado = ""
 
-  resultado = ""
-  
-  for caracter in texto:
-      if caracter.isalpha():  # Verificar si el caracter es una letra
-          mayuscula = caracter.isupper()  # Verificar si es mayúscula
-          caracter = caracter.lower()  # Convertir a minúscula para el cifrado
-          
-          codigo = ord(caracter) - ord('a')  # Convertir a un valor entre 0 y 25
-          codigo = (codigo + desplazamiento) % 26  # Aplicar el desplazamiento
-          caracter_cifrado = chr(codigo + ord('a'))  # Convertir de nuevo a letra
-          
-          if mayuscula:  # Restaurar mayúscula si era originalmente mayúscula
-              caracter_cifrado = caracter_cifrado.upper()
-          
-          resultado += caracter_cifrado
-      elif caracter.isnumeric():
-        # Si es un número
-        num_original = int(caracter)
-        num_cifrado = (num_original + desplazamiento) % 10
-        resultado += str(num_cifrado) 
-      else:
-          resultado += caracter  # Mantener caracteres no alfabéticos sin cambios
+    for caracter in texto:
+        if caracter.isalpha():  # Verificar si el caracter es una letra
+            mayuscula = caracter.isupper()  # Verificar si es mayúscula
+            caracter = caracter.lower()  # Convertir a minúscula para el descifrado
 
-  etiqueta_resultado.config(text="Texto ingresado: " + resultado)
+            codigo = ord(caracter) - ord('a')  # Convertir a un valor entre 0 y 25
+            codigo = (codigo - desplazamiento) % 26  # Aplicar el desplazamiento en sentido contrario
+            caracter_descifrado = chr(codigo + ord('a'))  # Convertir de nuevo a letra
 
+            if mayuscula:  # Restaurar mayúscula si era originalmente mayúscula
+                caracter_descifrado = caracter_descifrado.upper()
+
+            resultado += caracter_descifrado
+        elif caracter.isnumeric():
+            # Si es un número
+            num_original = int(caracter)
+            num_descifrado = (num_original - desplazamiento) % 10
+            resultado += str(num_descifrado)
+        else:
+            resultado += caracter  # Mantener caracteres no alfabéticos sin cambios
+
+    etiqueta_resultado.config(text="Texto descifrado: " + resultado)
     
 def decifrado_cesar(ventana, frame_menu):
 
@@ -61,10 +59,17 @@ def decifrado_cesar(ventana, frame_menu):
   clave_de_cifrado = ttk.Entry(frame_cesar, width = 80)
   clave_de_cifrado.pack()
 
-  boton_de_enviar = ttk.Button(frame_cesar, text='Enviar', width = 40, command=lambda: cifrado(mensaje_a_cifrar, clave_de_cifrado, etiqueta_resultado))
+  boton_de_enviar = ttk.Button(
+    frame_cesar, text='Enviar', 
+    width = 40, 
+    command=lambda: decifrado(mensaje_a_cifrar, clave_de_cifrado, etiqueta_resultado)
+  )
   boton_de_enviar.pack( pady = 10)
 
-  button = ttk.Button(frame_cesar, text='Regresar', width=40,command=lambda: regresar_menu(frame_cesar, frame_menu, menu_config))
+  button = ttk.Button(
+    frame_cesar, text='Regresar', 
+    width=40,command=lambda: regresar_menu(frame_cesar, frame_menu, menu_config)
+  )
   button.pack()
 
 

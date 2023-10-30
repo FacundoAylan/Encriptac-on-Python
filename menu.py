@@ -15,19 +15,52 @@ def mostrar_cifrado(frame_menu, cifrado, ventana):
   opcion_cesar.pack()  # Mostrar el frame_menu
 
 def menu(ventana):
-  frame_menu = ttk.Frame(ventana)
+  s = ttk.Style()
+  # Puedes configurar el color de fondo como desees
+  s.configure(
+      'Custom.TFrame', 
+      background='#007acc',
+      font=("Arial", 16, "bold"),
+  )  
+  frame_menu = ttk.Frame(ventana, style='Custom.TFrame')
   frame_menu.pack(fill="both", expand=True)
-  label = ttk.Label(frame_menu, text='Menu', font=("Arial", 16, "bold"))
-  label.pack()
+  label = ttk.Label(
+    frame_menu, 
+    text='Menu', 
+    font=("Arial", 16, "bold"),
+    background="#007acc",
+    foreground='white'
+  )
+  label.pack(pady = 10)
 
-  button = ttk.Button(frame_menu, text='Cifrar mensaje César', width=40,command=lambda: mostrar_cifrado(frame_menu,cifrado_cesar, ventana))
-  button.pack()
-  button = ttk.Button(frame_menu, text='Descifrar mensaje César', width=40,command=lambda: mostrar_cifrado(frame_menu,decifrado_cesar, ventana))
-  button.pack()
-  button = ttk.Button(frame_menu, text='Cifrar mensaje Atbash', width=40,command=lambda: mostrar_cifrado(frame_menu,cifrado_atbash, ventana))
-  button.pack()
-  button = ttk.Button(frame_menu, text='Descifrar mensaje Atbash', width=40,command=lambda: mostrar_cifrado(frame_menu,decifrado_atbash, ventana))
-  button.pack()
+  button = ttk.Button(
+    frame_menu, 
+    text='Cifrar mensaje César', 
+    width=40,
+    command=lambda: mostrar_cifrado(frame_menu,cifrado_cesar, ventana)
+  )
+  button.pack(pady = 10)
+  button = ttk.Button(
+    frame_menu, 
+    text='Descifrar mensaje César', 
+    width=40,
+    command=lambda: mostrar_cifrado(frame_menu,decifrado_cesar, ventana)
+  )
+  button.pack(pady = 10)
+  button = ttk.Button(
+    frame_menu, 
+    text='Cifrar mensaje Atbash', 
+    width=40,
+    command=lambda: mostrar_cifrado(frame_menu,cifrado_atbash, ventana)
+  )
+  button.pack(pady = 10)
+  button = ttk.Button(
+    frame_menu, 
+    text='Descifrar mensaje Atbash', 
+    width=40,
+    command=lambda: mostrar_cifrado(frame_menu,decifrado_atbash, ventana)
+  )
+  button.pack(pady = 10)
 
 
   return frame_menu

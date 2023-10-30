@@ -44,27 +44,47 @@ def cifrado_cesar(ventana, frame_menu):
   # Guardar la configuración original del frame_cesar
   menu_config = frame_cesar.pack_info()
   
-  label = ttk.Label( frame_cesar, text = 'Encriptación de mensajes',font=("Arial", 16, "bold"))
+  label = ttk.Label( 
+    frame_cesar, text = 'Encriptación de mensajes',
+    font=("Arial", 16, "bold")
+  )
   label.pack()
 
   #Los input encargados de obtener la información
 
-  mensaje_label = ttk.Label( frame_cesar, text = 'Mensaje a cifrar',font=("Arial", 10, "bold"))
+  mensaje_label = ttk.Label( 
+    frame_cesar, 
+    text = 'Mensaje a cifrar',
+    font=("Arial", 10, "bold")
+  )
   mensaje_label.pack(pady = 10)
 
   mensaje_a_cifrar = ttk.Entry(frame_cesar, width = 80)
   mensaje_a_cifrar.pack()
 
-  clave_label = ttk.Label( frame_cesar, text = 'Clave de cifrado',font=("Arial", 10, "bold"))
+  clave_label = ttk.Label( 
+    frame_cesar, 
+    text = 'Clave de cifrado',
+    font=("Arial", 10, "bold")
+  )
   clave_label.pack(pady = 10)
 
   clave_de_cifrado = ttk.Entry(frame_cesar, width = 80)
   clave_de_cifrado.pack()
 
-  boton_de_enviar = ttk.Button(frame_cesar, text='Enviar', width = 40, command=lambda: cifrado(mensaje_a_cifrar, clave_de_cifrado, etiqueta_resultado))
+  boton_de_enviar = ttk.Button(
+    frame_cesar, 
+    text='Enviar', 
+    width = 40, 
+    command=lambda: cifrado(mensaje_a_cifrar, clave_de_cifrado, etiqueta_resultado)
+  )
   boton_de_enviar.pack( pady = 10)
 
-  button = ttk.Button(frame_cesar, text='Regresar', width=40,command=lambda: regresar_menu(frame_cesar, frame_menu, menu_config))
+  button = ttk.Button(
+    frame_cesar, 
+    text='Regresar', 
+    width=40,command=lambda: regresar_menu(frame_cesar, frame_menu, menu_config)
+  )
   button.pack()
 
 
