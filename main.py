@@ -5,6 +5,7 @@ from home import home
 
 ruta_icono = os.path.join(os.path.dirname(__file__), "logo.ico")
 
+print('reaclice un cambio nuevo')
 def main ():
   ventana = tk.Tk()
 

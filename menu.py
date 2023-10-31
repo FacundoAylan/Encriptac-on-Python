@@ -11,8 +11,7 @@ def mostrar_cifrado(frame_menu, cifrado, ventana):
 
   #Creacion del frame del menu
   opcion_cesar = cifrado(ventana,frame_menu)
-  opcion_cesar.pack(fill="both", expand=True)
-  opcion_cesar.pack()  # Mostrar el frame_menu
+  opcion_cesar.pack(fill="both", expand=True)# Mostrar el frame_menu
 
 def menu(ventana):
   s = ttk.Style()

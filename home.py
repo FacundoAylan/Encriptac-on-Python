@@ -9,8 +9,6 @@ def mostrar_menu(frame_home, ventana):
     frame_menu = menu(ventana)
     frame_menu.pack(fill="both", expand=True)
     #oculta el menu
-    frame_menu.pack()  # Mostrar el frame_menu
-
 
 def home(ventana):
 

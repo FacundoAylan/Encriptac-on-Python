@@ -16,6 +16,8 @@ def cifrado(mensaje_a_cifrar, etiqueta_resultado):
           caracter_cifrado = chr(ord('z') - (ord(caracter) - ord('a')))
       elif 'A' <= caracter <= 'Z':
           caracter_cifrado = chr(ord('Z') - (ord(caracter) - ord('A')))
+      elif '0' <= caracter <= '9':
+          caracter_cifrado=chr(ord('9')-(ord(caracter)-ord('0')))
       else:
           caracter_cifrado = caracter 
 
