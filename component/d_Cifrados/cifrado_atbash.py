@@ -58,7 +58,8 @@ def cifrado_atbash(ventana, frame_menu):
   button = ttk.Button(
     frame_atbash, 
     text='Regresar', 
-    width=40,command=lambda: regresar_menu(frame_atbash, frame_menu, menu_config)
+    width=40,
+    command=lambda: regresar_menu(frame_atbash, frame_menu, menu_config)
   )
   button.pack()
 
