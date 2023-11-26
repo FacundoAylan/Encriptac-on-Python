@@ -1,13 +1,12 @@
 import tkinter as tk
 from component.b_Sesion.sesion import Sesion
 from component.b_Sesion.create import Create
-from component.c_Menu.menu import menu
 
 def mostrar_menu(frame_home, ventana, component):
 
     frame_home.pack_forget()  # Ocultar el frame_home
     #Creacion del frame del menu
-    frame_menu = component(ventana)
+    frame_menu = component(ventana,Create, Sesion)
     frame_menu.pack(fill="both", expand=True)
     #oculta el menu
 

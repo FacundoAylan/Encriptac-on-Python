@@ -19,9 +19,12 @@ def regresar_menu(frame_usuario, frame_inicio, ventana, usuario, contraseña, da
       frame_usuario.pack_forget()
       # Mostrar el frame_menu con la configuración original
       frame_inicio(ventana)
-      
+def regresar_create(frame_usuario,frame_inicio,ventana, sesion):
+  frame_usuario.pack_forget()
+  # Mostrar el frame_menu con la configuración original
+  frame_inicio(ventana,sesion,frame_inicio)
 
-def Sesion(ventana):
+def Sesion(ventana,create, sesion):
 
   datos = leer_csv('datos.csv')
 
@@ -74,5 +77,20 @@ def Sesion(ventana):
     cursor = 'hand2'
   )
   button_get.place(relx=0.4,rely=0.4)
+
+  button_create = tk.Button(
+    frame_sesion, 
+    text='Crear usuario',
+    command=lambda: regresar_create(frame_sesion, create, ventana, sesion)  
+  )
+  button_create.config(
+    width = 25,
+    height = 1,
+    bg = '#4a98ba',
+    bd = 2,
+    relief = 'flat',
+    cursor = 'hand2'
+  )
+  button_create.place(relx=0.38,rely=0.48)
 
   return frame_sesion

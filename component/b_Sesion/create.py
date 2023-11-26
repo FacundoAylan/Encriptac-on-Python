@@ -8,7 +8,6 @@ def guardar_en_csv(usuario,contraseña,pregunta,respuesta):
     contraseña = contraseña.get()
     pregunta = pregunta.get()
     respuesta = respuesta.get()
-    print(usuario,contraseña,pregunta,respuesta)
     with open('datos.csv', mode='a', newline='') as archivo_csv:
         escritor_csv = csv.writer(archivo_csv, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
         escritor_csv.writerow([usuario, contraseña,pregunta,respuesta])
@@ -17,8 +16,12 @@ def regresar_menu(frame_usuario, frame_inicio, ventana):
   frame_usuario.pack_forget()
   # Mostrar el frame_menu con la configuración original
   frame_inicio(ventana)
+def regresar_sesion(frame_usuario,frame_inicio,ventana, create):
+  frame_usuario.pack_forget()
+  # Mostrar el frame_menu con la configuración original
+  frame_inicio(ventana, frame_inicio,create)
 
-def Create(ventana):
+def Create(ventana, create, sesion):
 
   opciones = [
     'Apellido de su abuela materna',
@@ -101,5 +104,21 @@ def Create(ventana):
     cursor = 'hand2'
   )
   button_get.place(relx=0.4,rely=0.62)
+  
+  button_prev = tk.Button(
+    frame_create, 
+    text='Iniciar sesion',
+    # command=lambda: regresar_menu(frame_create, menu, ventana) 
+    command=lambda: regresar_sesion(frame_create, sesion, ventana,create)
+  ) 
+  button_prev.config(
+    width = 20,
+    height = 1,
+    bg = '#4a98ba',
+    bd = 2,
+    relief = 'flat',
+    cursor = 'hand2'
+  )
+  button_prev.place(relx=0.4,rely=0.69)
 
   return frame_create
