@@ -16,6 +16,8 @@ def cifrado(mensaje_a_cifrar, etiqueta_resultado):
           caracter_cifrado = chr(ord('z') - (ord(caracter) - ord('a')))
       elif 'A' <= caracter <= 'Z':
           caracter_cifrado = chr(ord('Z') - (ord(caracter) - ord('A')))
+      elif '0' <= caracter <= '9':
+          caracter_cifrado=chr(ord('9')-(ord(caracter)-ord('0')))
       else:
           caracter_cifrado = caracter 
 
@@ -56,7 +58,8 @@ def cifrado_atbash(ventana, frame_menu):
   button = ttk.Button(
     frame_atbash, 
     text='Regresar', 
-    width=40,command=lambda: regresar_menu(frame_atbash, frame_menu, menu_config)
+    width=40,
+    command=lambda: regresar_menu(frame_atbash, frame_menu, menu_config)
   )
   button.pack()
 

@@ -1,7 +1,7 @@
 import os
 import tkinter as tk
 from tkinter import ttk
-from home import home
+from component.a_Home.home import home
 
 ruta_icono = os.path.join(os.path.dirname(__file__), "logo.ico")
 
@@ -23,7 +23,7 @@ def main ():
   ventana.iconphoto(False, icono)
 
   # Crear y configurar el Frame
-  frame = home(ventana)
+  home(ventana)
 
   ventana.mainloop()
 
