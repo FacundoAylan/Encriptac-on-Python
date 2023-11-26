@@ -1,6 +1,17 @@
 import tkinter as tk
 from tkinter import ttk
 from component.c_Menu.menu import menu
+import csv
+
+def guardar_en_csv(usuario,contraseña,pregunta,respuesta):
+    usuario = usuario.get()
+    contraseña = contraseña.get()
+    pregunta = pregunta.get()
+    respuesta = respuesta.get()
+    print(usuario,contraseña,pregunta,respuesta)
+    with open('datos.csv', mode='a', newline='') as archivo_csv:
+        escritor_csv = csv.writer(archivo_csv, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+        escritor_csv.writerow([usuario, contraseña,pregunta,respuesta])
 
 def regresar_menu(frame_usuario, frame_inicio, ventana):
   frame_usuario.pack_forget()
@@ -40,7 +51,7 @@ def Create(ventana):
   usuario = tk.Entry(frame_create, width=55)
   usuario.place(relx=0.24,rely=0.21)
 
-  label_password = tk.Label(
+  label_contraseña = tk.Label(
     frame_create, 
     text='Contraseña',
     font=("Arial", 16, "bold"),
@@ -48,9 +59,9 @@ def Create(ventana):
     foreground='white'  
   )
 
-  label_password.place(relx=-0.18,rely=0.28, relwidth=0.98)
-  password = tk.Entry(frame_create, width=55)
-  password.place(relx=0.24,rely=0.33)
+  label_contraseña.place(relx=-0.18,rely=0.28, relwidth=0.98)
+  contraseña = tk.Entry(frame_create, width=55)
+  contraseña.place(relx=0.24,rely=0.33)
   label_select = tk.Label(
     frame_create, 
     text='Pregunta de seguridad',
@@ -59,9 +70,9 @@ def Create(ventana):
     foreground='white'  
   )
   label_select.place(relx=-0.11,rely=0.4, relwidth=0.98)
-  combo = ttk.Combobox(ventana, textvariable=selected_option, values=opciones, width=54)
-  combo.set("Seleccionar opción")  # Valor por defecto que se muestra
-  combo.place(relx=0.24,rely=0.45)
+  pregunta = ttk.Combobox(ventana, textvariable=selected_option, values=opciones, width=54)
+  pregunta.set("Seleccionar opción")
+  pregunta.place(relx=0.24,rely=0.45)
 
   label_respuesta = tk.Label(
     frame_create, 
@@ -78,7 +89,8 @@ def Create(ventana):
   button_get = tk.Button(
     frame_create, 
     text='Crear',
-    command=lambda: regresar_menu(frame_create, menu, ventana)  
+    # command=lambda: regresar_menu(frame_create, menu, ventana) 
+    command=lambda: guardar_en_csv(usuario,contraseña,pregunta,respuesta) 
   )
   button_get.config(
     width = 20,
